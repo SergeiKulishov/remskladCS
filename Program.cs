@@ -14,7 +14,7 @@ namespace remsklad_C_
             // string responceMessage = ConnectionWithRemonline.getPageFromRemonline(responceToken.token,1);
             // System.Console.WriteLine(responceMessage);
             List<Item> ListItem = new List<Item>();
-            for (var i = 1; i < 10; i++)
+            for (var i = 1; i < 26; i++)
             {
                 string responceMessage = ConnectionWithRemonline.getPageFromRemonline(await ConnectionWithRemonline.getToken(), i);
                 
@@ -22,6 +22,10 @@ namespace remsklad_C_
                 ListItem.Add(thing);
                 
             }
+                        
+            string[] articlesOfAccum = { "1010", "1020", "1030", "1050", "1060", "1070", "1080", "1090", "1120", "1128", "1129", "1125" };
+            string[] articlesOfDisplay = { "0601", "0601s", "0602", "0602s", "0601p", "0601sp", "0602p", "0602sp" };
+
 
             Dictionary<string,Datum> ItemsfromWarehouse = new Dictionary<string,Datum>();
             try
@@ -33,7 +37,13 @@ namespace remsklad_C_
                 {  
                     try
                     {
-                        ItemsfromWarehouse.Add(p.article,p);
+                        foreach(string i in articlesOfAccum ){
+                            if (p.article == i)
+                            {
+                                ItemsfromWarehouse.Add(p.article,p);    
+                            }  
+                            
+                        }
                     // Console.WriteLine(p.title);
                     }
                     catch (System.Exception)
