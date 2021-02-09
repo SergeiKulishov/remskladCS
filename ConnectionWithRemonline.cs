@@ -9,8 +9,6 @@ namespace remsklad_C_
     public class ConnectionWithRemonline
     {
         protected static string responseToken;
-
-
         public static async Task PostRequestAsync()
         {
             WebRequest request = WebRequest.Create("https://api.remonline.ru/token/new");
