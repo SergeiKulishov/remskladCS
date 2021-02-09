@@ -8,8 +8,7 @@ namespace remsklad_C_
     class Program
     {
         static async Task Main(string[] args)
-        {
-        
+        { 
             
             // string responceMessage = ConnectionWithRemonline.getPageFromRemonline(responceToken.token,1);
             // System.Console.WriteLine(responceMessage);
@@ -17,7 +16,6 @@ namespace remsklad_C_
             for (var i = 1; i < 26; i++)
             {
                 string responceMessage = ConnectionWithRemonline.getPageFromRemonline(await ConnectionWithRemonline.getToken(), i);
-                
                 Item thing = JsonConvert.DeserializeObject<Item>(responceMessage);
                 ListItem.Add(thing);
                 

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace remsklad_C_
 {
-    
-
     public class Category
     {
         public int id { get; set; }
