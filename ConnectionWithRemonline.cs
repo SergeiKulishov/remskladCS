@@ -42,7 +42,7 @@ namespace remsklad_C_
             Console.WriteLine("Запрос выполнен...");
         }
 
-        public static async Task<string> getToken()
+        private static async Task<string> getToken()
         {
             await PostRequestAsync();
             var jsonResponceToken =  ConnectionWithRemonline.responseToken;
@@ -115,9 +115,6 @@ namespace remsklad_C_
             }
             return ItemsfromWarehouse;
         }
-
-
-
 
     }
 }
