@@ -42,7 +42,7 @@ namespace remsklad_C_
             Console.WriteLine("Запрос выполнен...");
         }
 
-        private static async Task<string> getToken()
+        private static async Task<string> GetToken()
         {
             await PostRequestAsync();
             var jsonResponceToken =  ConnectionWithRemonline.responseToken;
@@ -52,7 +52,7 @@ namespace remsklad_C_
 
         }
 
-        public static string getPageFromRemonline(string token,int page)
+        public static string GetPageFromRemonline(string token,int page)
         {
             // Адрес ресурса, к которому выполняется запрос
             string url = $"https://api.remonline.ru/warehouse/goods/28208?page={page}&token={token}";
@@ -72,7 +72,7 @@ namespace remsklad_C_
             List<Item> ListItem = new List<Item>();
             for (var i = 1; i < pageCount; i++)
             {
-                string responceMessage = ConnectionWithRemonline.getPageFromRemonline(await ConnectionWithRemonline.getToken(), i);
+                string responceMessage = ConnectionWithRemonline.GetPageFromRemonline(await ConnectionWithRemonline.GetToken(), i);
                 Item thing = JsonConvert.DeserializeObject<Item>(responceMessage);
                 ListItem.Add(thing);
             }

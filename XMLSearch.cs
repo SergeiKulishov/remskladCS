@@ -13,7 +13,7 @@ namespace remsklad_C_
         {
             for (int i = 1; i < pageCount; i++)
             {
-                string responceMessage = ConnectionWithRemonline.getPageFromRemonline(token, i);
+                string responceMessage = ConnectionWithRemonline.GetPageFromRemonline(token, i);
                 string json = responceMessage.ToString();
                 //Console.WriteLine(json);
                 XmlDocument node = JsonConvert.DeserializeXmlNode(json, "data");
@@ -44,7 +44,7 @@ namespace remsklad_C_
         {
             for (int i = 1; i < pageCount; i++)
             {
-                string responceMessage = ConnectionWithRemonline.getPageFromRemonline(token, i);
+                string responceMessage = ConnectionWithRemonline.GetPageFromRemonline(token, i);
                 string json = responceMessage.ToString();
                 //Console.WriteLine(json);
                 XmlDocument node = JsonConvert.DeserializeXmlNode(json, "data");
