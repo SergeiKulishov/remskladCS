@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Storage;
 using Newtonsoft.Json;
 
 namespace remsklad_C_
@@ -25,44 +26,14 @@ namespace remsklad_C_
             }
 
 
-           //Dictionary<string, Datum> ItemsFromWarehouse = ConnectionWithRemonline.GetItemByArticle(await ConnectionWithRemonline.GetCollectionOfItems(), allArticles);
+            Dictionary<string, Datum> ItemsFromWarehouse = ConnectionWithRemonline.GetItemByArticle(await ConnectionWithRemonline.GetCollectionOfItems(), allArticles);
 
-            Console.WriteLine();
-            Console.ReadLine();
-
-            //foreach( KeyValuePair<string ,Datum> kvp in ItemsFromWarehouse ){
-            //   System.Console.WriteLine(kvp.Key + " - Кол-во: " + kvp.Value.residue + " - " + kvp.Value.title + "::" +  kvp.Value.id );
-            //}
-
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                //foreach (KeyValuePair<string, Datum> kvp in ItemsFromWarehouse)
-                //{
-                //    //System.Console.WriteLine(kvp.Key + " - Кол-во: " + kvp.Value.residue + " - " + kvp.Value.title );
-                //    //
-
-                //    // добавляем их в бд
-                //    db.Datums.Add(kvp.Value);
-                //}
-                //db.SaveChanges();
-                //Console.WriteLine("Объекты успешно сохранены");
-
-                // получаем объекты из бд и выводим на консоль
-                var items = db.Datums.ToList();
-                Console.WriteLine("Список объектов:");
-                foreach( var i in items)
-                {
-                    Console.WriteLine(i.article + " - " + i.title + " Кол-во: " + i.residue);
-                }
-
-                
-            }
+            Repository.Update(ItemsFromWarehouse);
+            Repository.FetchData();
             Console.Read();
+
+
         }
-
-
-
-
-
+        
     }
 }
